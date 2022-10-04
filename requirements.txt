@@ -1,1 +1,3 @@
 # Your requirements go here
+remember to 'pip3 install gspread google-auth'
+remmeber to create sheet and share sheet to email address
