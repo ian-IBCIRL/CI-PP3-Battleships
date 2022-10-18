@@ -32,7 +32,7 @@ def play_battleships(user):
     random_number = random.randint(1, 100)
     print("Random number is: ", random_number)
 
-    print(user)
+    print("User is: ", user)
     return user
 
 
