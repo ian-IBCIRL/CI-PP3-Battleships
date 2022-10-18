@@ -1,6 +1,5 @@
 # Battleships game code
 import random
-import time
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -32,9 +31,7 @@ def play_battleships(user):
     user = 'testuser'
     random_number = random.randint(1, 100)
     print("Random number is: ", random_number)
-    current_time = time.time()
-    print("Time is: ", current_time)
-
+    
     print(user)
     return user
 
