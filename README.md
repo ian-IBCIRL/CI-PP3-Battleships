@@ -52,7 +52,7 @@ That means that each line of text needs to be 80 characters or less otherwise it
 
 ## Libraries used
 
-In this project, 3 libraries are utilised, as instructed by Code Institute and their python template
+In this project, 3 libraries are utilised, as instructed by Code Institute and their python project template
 
 - The random library is imported to generate random numbers for the opponent ship placement coordinates and to generate the computer's next target location.
 - The Google gspread library is imported to control the spreadsheet containing the username and passwords and the user's scores.
