@@ -41,7 +41,7 @@ def play_battleships(user):
 
 def check_result(ship_map, user):
     """
-    Runs required gameplay functions
+    Runs required result checking functions
     """
     print("playing battleships")
     ship_map = "displaying map"
@@ -51,7 +51,7 @@ def check_result(ship_map, user):
 
 def results(result, user):
     """
-    Runs required result functions
+    Runs required result display functions
     """
     print("checking results")
     user = 'testuser'
