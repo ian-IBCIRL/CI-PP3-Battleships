@@ -31,9 +31,9 @@ def play_battleships(user):
     print("playing battleships")
     user = 'testuser'
     random_number = random.randint(1, 100)
-    print("Random number is: ",random_number)
+    print("Random number is: ", random_number)
     current_time = time.time()
-    print("Time is: ",current_time)
+    print("Time is: ", current_time)
 
     print(user)
     return user
@@ -56,8 +56,8 @@ def results(result, user):
     print("checking results")
     user = 'testuser'
     result = 'winner'
-    print(result)
-    print(user)
+    print("User is: ", user)
+    print("Result is: ", result)
     return user
 
 
