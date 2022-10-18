@@ -31,9 +31,9 @@ def play_battleships(user):
     print("playing battleships")
     user = 'testuser'
     random_number = random.randint(1, 100)
-    print(random_number)
-    current_time = time.gmtime()
-    print(current_time)
+    print("Random number is: ",random_number)
+    current_time = time.time()
+    print("Time is: ",current_time)
 
     print(user)
     return user
@@ -44,7 +44,7 @@ def check_result(ship_map, user):
     Runs required gameplay functions
     """
     print("playing battleships")
-    ship_map = 1
+    ship_map = "displaying map"
     print(ship_map)
     return user
 
@@ -65,12 +65,9 @@ def continue_playing():
     """
     Runs required continue playing functions
     """
-    print("checking results")
-    user = 'testuser'
-    result = 'winner'
-    print(result)
-    print(user)
-    return user
+    print("continue playing?")
+
+    return False
 
 
 def main():
