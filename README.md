@@ -27,11 +27,20 @@ The aim of the game is to view a map/grid of possible locations for opponent's s
 ## Reminders
 
 * My code is placed in the `run.py` file
-* My dependencies are placed in the `requirements.txt` file
-* remember to 'pip3 install gspread google-auth' if import fails initially
+* My dependencies are placed in the `requirements.txt` file using `pip3 freeze` and directing the output or copying to requirements.txt
+* remember to `pip3 install gspread google-auth` and  `pip3 install gspread` if import fails initially
 * remember to create a Google works sheet and share sheet to a google email address identity
+* If not using our Heroku deployed environment, you will need your own creds.json to access your own google spreadsheet.
 * Do not edit any of the other files or this code may not deploy properly
 
+## Bugs fixed
+* fixed pylint warnings about trailing spaces, space after # in comments
+* also fixed pylint error if using space between print command and opening bracket i.e. print ("test") is incorrect - should be print("test") with no space.
+* fixed .gitpod.yml problems by adding the following lines to vscode: extensions: section of .gitpod.yml file
+    - ms-toolsai.jupyter
+    - ms-toolsai.jupyter-keymap
+    - ms-toolsai.jupyter-renderers
+    
 ## Creating the Heroku app
 
 To create the app, I have added two buildpacks from the _Settings_ tab. The ordering is as follows:
