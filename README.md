@@ -3,12 +3,12 @@
 # Welcome!
 
 This is my Code Institute README for deploying my third portfolio project, the Python command-line project. 
-The last update to this file was: **October 18, 2022**
+The last update to this file was: **October 19, 2022**
 
 The aim of the game is to view a map/grid of possible locations for opponent's ships and try and locate the opponent's ships before their computer finds yours.
 
 ## Deployment
-* My code has been deployed to Heroku at 
+* My code has been deployed to Heroku at https://battleship-ib.herokuapp.com/
 
 ## The rules
 - Battleships is a classic game that has been enjoyed for generations.

@@ -81,5 +81,8 @@ def main():
             playgame = continue_playing()
 
 
-print('Welcome to the game of Battleships!')
-main()
+# Checks the game loop
+# Allows the user to call other functions for testing
+if __name__ == "__main__":
+    print('Welcome to the game of Battleships!')
+    main()
