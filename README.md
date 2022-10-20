@@ -54,6 +54,41 @@ I have credentials, such as in the Love Sandwiches project, so have created anot
 
 You should connect your GitHub repository and deploy as normal.
 
+## **Deployment**
+
+The site has been deployed through Heroku. 
+
+The site has been developed on GitPod, committed and pushed to GitHub. 
+
+Deployment proccess:
+
+1. Log in [Github](https://github.com/).
+    - Open the repo to deploy. 
+    - The one for this project is [here](https://github.com/ian-IBCIRL/bat).
+2. Log in [Heroku](https://www.heroku.com/).
+    - Click in the "New" button in the top right.
+    - Select "Create New App"
+    - Give a name to the App and choose a region (Europe, for example).
+    - Click in "Create App" button.
+    - Go to Settings in the nav bar, and select "Add Buildpacks".
+    - Add `Python` and save, do the same for `Node.js`, in that order. 
+    - `Python` must show first in the list.
+    - Go to Deploy in the nav bar. 
+    - In Deploment Method, select GitHub/Connect to GitHub.
+    - In Connect to GitHub (ideally with MFA), copy the repository name and click in search.
+    - Once the route for the repo appears under the search, click in "Connect" button.
+    - The deployment can be Manual or Automatic, select the one of your preference. 
+    - Automatic has the advantage of updating your deployed site as you push the commit in GitHub.
+    - Manual has the advantage of waiting until needed, rather than deploying evert time.
+    - Verify that "Branch to deploy" is master/main.
+    - Click Deploy.
+
+Steps to use and deploy this repository:
+
+- Access to the repo in GitHub [here](https://github.com/ian-IBCIRL/bat).
+- It can be "Fork" following the steps [here](https://docs.github.com/en/get-started/quickstart/fork-a-repo).
+- It can be "Clone" following the steps [here](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository#cloning-a-repository).
+
 ## Constraints
 
 The deployment terminal is set to 80 columns by 24 rows. 
