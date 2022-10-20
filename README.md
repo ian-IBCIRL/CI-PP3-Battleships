@@ -3,7 +3,7 @@
 # Welcome!
 
 This is my Code Institute README for deploying my third portfolio project, the Python command-line project. 
-The last update to this file was: **October 19, 2022**
+The last update to this file was: **October 20, 2022**
 
 The aim of the game is to view a map/grid of possible locations for opponent's ships and try and locate the opponent's ships before their computer finds yours.
 
@@ -88,6 +88,34 @@ Steps to use and deploy this repository:
 - Access to the repo in GitHub [here](https://github.com/ian-IBCIRL/bat).
 - It can be "Fork" following the steps [here](https://docs.github.com/en/get-started/quickstart/fork-a-repo).
 - It can be "Clone" following the steps [here](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository#cloning-a-repository).
+
+### **Features to implement in future**
+
+I'd like to add more storyline, graphics and options for placing ships in user specified locations.
+And find a way to make a two player game so the computer moves are not necessary.
+
+## **Technologies Used**
+- [Python](https://www.python.org/)
+- [GitHub](https://github.com/)
+- [GitPod](https://www.gitpod.io/)
+- [Heroku](https://www.heroku.com/about)
+- [LucidCharts](https://www.lucidchart.com/pages/)
+
+## **Testing**
+
+The site had been tested in Chrome, Firefox and Edge without issue. 
+
+### **Validation**
+
+The usual linter website is not working, but the linter built into the template works fine, so fixes have been made as noted above.
+Gitpod's Linter shows no error for run.py file. 
+
+
+### **Manual Testing**
+
+| Feature | Test Action | Validation for Wrong Input  | Test Outcome |
+|:---|        :---| :---|:---|
+| Name Input | Type in user's name | Check if empty | Pass |
 
 ## Constraints
 
