@@ -113,7 +113,7 @@ Gitpod's Linter shows no error for run.py file.
 
 ### **Manual Testing**
 
-| Feature | Test Action | Validation for Wrong Input  | Test Outcome |
+| Feature | Test description | Validation | Outcome |
 |:---|        :---| :---|:---|
 | Name Input | Type in user's name | Check if empty | Pass |
 

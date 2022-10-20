@@ -17,10 +17,55 @@ SHEET = GSPREAD_CLIENT.open('battleit')
 
 def loginuser():
     """
-    Runs required login functions
+    Allows set up of user account, or use of existing account, or guest login
     """
-    print("logging in")
-    return 'testuser'
+    login_valid = False
+    while login_valid is False:
+        print("Logging in")
+        print("----------")
+        print('[L] Login and play using an existing account')
+        print('[C] Make an account to record your score')
+        print('[G] Play as a guest\n')
+        print('Or [Q] you can quit the game at any time.\n')
+
+        login_option = input('Please enter one of the above letters:\n')
+
+        if login_option in ('L', 'l'):
+            user = login_existing_user()
+            login_valid = True
+        elif login_option in ('C', 'c'):
+            user = make_login()
+            login_valid = True
+        elif login_option in ('G', 'g'):
+            login_valid = True
+            user = 'Guest'
+        elif login_option in ('Q', 'q'):
+            print(f"You entered {login_option} to quit the game.")
+            print("See you again soon!")
+            return 'Q'
+        else:
+            print("Please retry as the input you entered is not a valid")
+            print(f"You entered: {login_option}, so try again.\n")
+
+    return user
+    
+
+def login_existing_user():
+    """
+    Runs required login existing user functions
+    """
+    print("login existing user")
+
+    return False
+
+
+def make_login():
+    """
+    Runs required make login functions
+    """
+    print("make new user login")
+
+    return False
 
 
 def play_battleships(user):
