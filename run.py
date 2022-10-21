@@ -44,6 +44,7 @@ def loginuser():
             print("See you again soon!")
             return 'Q'
         else:
+            print("------------")
             print("Please retry as the input you entered is not a valid")
             print(f"You entered: {login_option}, so try again.\n")
 
