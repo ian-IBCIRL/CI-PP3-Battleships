@@ -81,18 +81,24 @@ def play_battleships(user):
     player_board = build_board()
     computer_board = build_board()
 
-    print('--------------------------------------   \
-    --------------------------------------')
+    print('----------------------------   \
+    ----------------------------')
 
-    print(f"{user}'s ships locations                  \
+    print(f"{user}'s ships locations        \
     Computer's ships locations\n")
 
-    print(f"{player_board} for {user}             \
-        {computer_board} for computer")
+    board_gap = '                  '
+    print(*computer_board[0], board_gap, *player_board[0])
+    print(*computer_board[1], board_gap, *player_board[1])
+    print(*computer_board[2], board_gap, *player_board[2])
+    print(*computer_board[3], board_gap, *player_board[3])
+    print(*computer_board[4], board_gap, *player_board[4])
+    print(*computer_board[5], board_gap, *player_board[5])
+    print(*computer_board[6], board_gap, *player_board[6])
 
     print(' ')
-    print('--------------------------------------   \
-    --------------------------------------')
+    print('----------------------------   \
+    ----------------------------')
 
     random_number = random.randint(1, 100)
     print("Random number is: ", random_number)
@@ -114,12 +120,19 @@ def check_result(ship_map, user):
 
 def build_board():
     """
+    Generates the starting board which is blank
     Runs required functions to build a player board/map for ships
     """
-    print("playing battleships")
-    ship_map = "displaying map"
-    print(ship_map)
-    return ship_map
+
+    gamemap = [
+        ['   ', '1', '2', '3', '4', '5'],
+        ['  1', '-', '-', '-', '-', '-'],
+        ['  2', '-', '-', '-', '-', '-'],
+        ['y 3', '-', '-', '-', '-', '-'],
+        ['  4', '-', '-', '-', '-', '-'],
+        ['  5', '-', '-', '-', '-', '-'],
+        ['   ', ' ', ' ', 'x', ' ', ' ']]
+    return gamemap
 
 
 def results(result, user):
