@@ -55,7 +55,7 @@ def login_existing_user():
     """
     Runs required login existing user functions
     """
-    print("login existing user")
+    print("You chose to login existing user")
 
     return False
 
@@ -64,7 +64,7 @@ def make_login():
     """
     Runs required make login functions
     """
-    print("make new user login")
+    print("You chose to make a new user login")
 
     return False
 
@@ -77,6 +77,7 @@ def play_battleships(user):
 
     print('A hit is displayed as a H')
     print('A miss is displayed as a O\n')
+    input("Press enter to continue...")
 
     player_board = build_board()
     computer_board = build_board()
@@ -87,7 +88,7 @@ def play_battleships(user):
     print(f"{user}'s ships locations        \
     Computer's ships locations\n")
 
-    board_gap = '                  '
+    board_gap = '                   '
     print(*computer_board[0], board_gap, *player_board[0])
     print(*computer_board[1], board_gap, *player_board[1])
     print(*computer_board[2], board_gap, *player_board[2])
