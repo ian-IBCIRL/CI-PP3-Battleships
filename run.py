@@ -69,11 +69,24 @@ def make_login():
     return False
 
 
-def play_battleships(user):
+def ship_generator():
     """
-    Runs required gameplay functions to create new game boards
+    Generates random locations for ships
     """
-    print("Playing Battleships")
+    ships = []
+    while len(ships) < 5:
+        num1 = str(random.randint(1, 5)) + ',' + str(random.randint(1, 5))
+        if num1 not in ships:
+            ships.append(num1)
+    return ships
+
+
+def setup_battleships(user):
+    """
+    Runs required gameplay functions to set up
+    new game boards, locations and moves
+    """
+    print("Setting up Battleships")
 
     print('A hit is displayed as a H')
     print('A miss is displayed as a O\n')
@@ -101,19 +114,28 @@ def play_battleships(user):
     print('----------------------------   \
     ----------------------------')
 
-    random_number = random.randint(1, 100)
-    print("Random number is: ", random_number)
+    players_input_moves = []
+    computer_potential_moves = [
+        '1,5', '3,4', '1,1', '2,3', '1,4',
+        '5,1', '3,3', '5,5', '3,1', '2,2',
+        '4,3', '3,5', '4,1', '4,4', '5,3',
+        '2,1', '4,5', '4,2', '2,4', '3,2',
+        '1,2', '5,4', '2,5', '1,3', '5,2'
+        ]
 
-    print("User is: ", user)
+    player_ships_locations = ship_generator()
+    computer_ships_locations = ship_generator()
 
-    return user
+    return player_ships_locations, computer_ships_locations,\
+        players_input_moves, computer_potential_moves, \
+        player_board, computer_board
 
 
-def check_result(ship_map, user):
+def check_moves(ship_map, user):
     """
     Runs required result checking functions
     """
-    print("playing battleships")
+    print("getting moves and results")
     ship_map = "displaying map"
     print(ship_map)
     return user
@@ -136,7 +158,7 @@ def build_board():
     return gamemap
 
 
-def results(result, user):
+def show_results(result, user):
     """
     Runs required result display functions
     """
@@ -178,9 +200,9 @@ def main():
     if user != 'q' and user != 'Q':
         playgame = True
         while playgame is True:
-            ship_map = play_battleships(user)
-            result = check_result(ship_map, user)
-            results(result, user)
+            ship_map = setup_battleships(user)
+            result = check_moves(ship_map, user)
+            show_results(result, user)
             playgame = continue_playing()
 
 
