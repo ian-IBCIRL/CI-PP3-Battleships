@@ -6,6 +6,8 @@ This is my Code Institute README for deploying my third portfolio project, the P
 The last update to this file was: **October 20, 2022**
 
 The aim of the game is to view a map/grid of possible locations for opponent's ships and try and locate the opponent's ships before their computer finds yours.
+I wanted to ensure the board layout has both computer and player boards side by side horizontally to help visualisation and save vertical screen space
+Also provides an alternative to many existing versions of this game which use a lot of vertical space.
 
 ## Deployment
 * My code has been deployed to Heroku at https://battleship-ib.herokuapp.com/
