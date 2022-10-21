@@ -136,7 +136,7 @@ def results(result, user):
 
 def continue_playing():
     """
-    Runs required continue playing functions 
+    Runs required continue playing functions
     to check if player would like to continue playing
     """
     print("continue playing?")
