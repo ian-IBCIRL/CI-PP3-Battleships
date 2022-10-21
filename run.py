@@ -87,12 +87,12 @@ def play_battleships(user):
     print(f"{user}'s ships locations                  \
     Computer's ships locations\n")
 
-    print(player_board, '      ', computer_board)
+    print(f"{player_board} for {user}             \
+        {computer_board} for computer")
 
     print(' ')
     print('--------------------------------------   \
     --------------------------------------')
-
 
     random_number = random.randint(1, 100)
     print("Random number is: ", random_number)
@@ -136,11 +136,24 @@ def results(result, user):
 
 def continue_playing():
     """
-    Runs required continue playing functions
+    Runs required continue playing functions 
+    to check if player would like to continue playing
     """
     print("continue playing?")
 
-    return False
+    deciding = True
+    while deciding is True:
+        playchoice = input("Would you like to play another game? \
+        \nEnter [P] to play again\nor \nEnter [Q] to quit the game\n")
+
+        if playchoice in ('P', 'p'):
+            return True
+        if playchoice in ('Q', 'q'):
+            print('Thank you for playing Battleships!')
+            return False
+
+        print(f"Your input is not valid, you have entered: {playchoice},")
+        print("Please try again.\n")
 
 
 def main():
