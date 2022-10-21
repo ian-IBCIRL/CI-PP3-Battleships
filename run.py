@@ -24,7 +24,7 @@ def loginuser():
         print("Logging in")
         print("----------")
         print('[L] Login and play using an existing account')
-        print('[C] Make an account to record your score')
+        print('[M] Make an account to record your score')
         print('[G] Play as a guest\n')
         print('Or [Q] you can quit the game at any time.\n')
 
@@ -33,7 +33,7 @@ def loginuser():
         if login_option in ('L', 'l'):
             user = login_existing_user()
             login_valid = True
-        elif login_option in ('C', 'c'):
+        elif login_option in ('M', 'm'):
             user = make_login()
             login_valid = True
         elif login_option in ('G', 'g'):
@@ -48,7 +48,7 @@ def loginuser():
             print(f"You entered: {login_option}, so try again.\n")
 
     return user
-    
+
 
 def login_existing_user():
     """
@@ -70,14 +70,34 @@ def make_login():
 
 def play_battleships(user):
     """
-    Runs required gameplay functions
+    Runs required gameplay functions to create new game boards
     """
-    print("playing battleships")
-    user = 'testuser'
+    print("Playing Battleships")
+
+    print('A hit is displayed as a H')
+    print('A miss is displayed as a O\n')
+
+    player_board = build_board()
+    computer_board = build_board()
+
+    print('--------------------------------------   \
+    --------------------------------------')
+
+    print(f"{user}'s ships locations                  \
+    Computer's ships locations\n")
+
+    print(player_board, '      ', computer_board)
+
+    print(' ')
+    print('--------------------------------------   \
+    --------------------------------------')
+
+
     random_number = random.randint(1, 100)
     print("Random number is: ", random_number)
 
     print("User is: ", user)
+
     return user
 
 
@@ -89,6 +109,16 @@ def check_result(ship_map, user):
     ship_map = "displaying map"
     print(ship_map)
     return user
+
+
+def build_board():
+    """
+    Runs required functions to build a player board/map for ships
+    """
+    print("playing battleships")
+    ship_map = "displaying map"
+    print(ship_map)
+    return ship_map
 
 
 def results(result, user):
