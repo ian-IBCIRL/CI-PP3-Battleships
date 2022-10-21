@@ -131,12 +131,21 @@ def setup_battleships(user):
         player_board, computer_board
 
 
-def check_moves(ship_map, user):
+def coordinates_entered(ship_map, user):
     """
     Runs required result checking functions
     """
     print("getting moves and results")
-    ship_map = "displaying map"
+
+    coordinates_not_valid = True
+    while coordinates_not_valid is True:
+        print("Please enter your move below,")
+        print("with column (x) then row (y) separated by a comma\n")
+        move = input("i.e. 'x,y' or 'Q' to quit\n")
+
+        if move == 'Q' or move == 'q':
+            return 'Q'
+
     print(ship_map)
     return user
 
@@ -168,6 +177,40 @@ def show_results(result, user):
     print("User is: ", user)
     print("Result is: ", result)
     return user
+
+
+def check_moves(ship_data, user):
+    """
+    Function takes the player and computer ship lists and
+    checks the length of the list, and while both have a length
+    greater than 0 (indicating ships are left the game) the function continues.
+    The coordinates_entered function gets move coordinates
+    and outcome for both opponents.
+    Unless the player has entered Q to quit the game.
+    If the game ends without the player quitting it will also calculate
+    if the player won, lost, or drew
+    """
+    while len(ship_data[0]) > 0 and len(ship_data[1]) > 0:
+        print(' ')
+        print(f"{user} has {len(ship_data[0])} ships left")
+        print(f"Computer has {len(ship_data[1])} ships left\n")
+
+        if coordinates_entered(ship_data, user) == 'Q':
+            print(f"Your remaining ships are at: {ship_data[0]}")
+            print(f"The remaining opponent ships are at: {ship_data[1]}\n")
+            return 'Q'
+
+    if len(ship_data[0]) != 0 and len(ship_data[1]) == 0:
+        # player wins
+        print(f"Your remaining ships are at: {ship_data[0]}\n")
+        return 'W'
+    if len(ship_data[1]) != 0 and len(ship_data[0]) == 0:
+        # computer wins
+        print(f"The remaining opponent ships are at: {ship_data[1]}\n")
+        return 'L'
+    if len(ship_data[0]) == 0 and len(ship_data[1]) == 0:
+        # both sides were destroyed in the same round -> draw
+        return 'D'
 
 
 def continue_playing():
