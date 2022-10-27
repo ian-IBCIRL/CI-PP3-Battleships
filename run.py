@@ -57,18 +57,6 @@ def login_existing_user():
     """
     print("You chose to login existing user")
 
-    return False
-
-
-def make_login():
-    """
-    Runs required make login functions
-    This function will check if a username is already in use. 
-    If not in use, the function will save the username and password 
-    to the spreadsheet and enable the recording of scores
-    """
-
-    print("You chose to make a new user login")
 
     acceptable_username = True
 
@@ -85,6 +73,50 @@ def make_login():
 
         if username in username_data:
             acceptable_username = False
+        elif username in ('q', 'Q'):
+            print(f"You have entered {username} to quit the game.")
+            print("Hope you come back soon!")
+            return 'Q'
+        else:
+            print(f"Username: '{username}', is not recognised please try again\n")
+
+    return username
+
+
+def make_login():
+    """
+    Runs required make login functions
+    This function will check if a username is already in use. 
+    If not in use, the function will save the username and password 
+    to the spreadsheet and enable the recording of scores
+    """
+
+    print("You chose to make a new user login")
+
+    acceptable_username = True
+
+    login = SHEET.worksheet('login')
+    score = SHEET.worksheet('score')
+
+    username_data = login.col_values(1)
+    
+    print("Please note: \nUsername and Password are case sensitive.\
+        \n20 characters or less in length")
+
+    while acceptable_username is True:
+        username = input('Please enter your username:\n')
+        acceptable_username = False
+        if username in username_data:
+            print(
+                f"Please select another username. \
+                    \n'{username}' has already been selected.\n"
+                )
+            acceptable_username = True
+        elif username.count(' ') >= 1 or username == '' or username.len > 20:
+            print(
+                f"Please select another username as '{username}' is not valid.\n"
+                )
+            acceptable_username = True
         elif username in ('q', 'Q'):
             print(f"You have entered {username} to quit the game.")
             print("Hope you come back soon!")
