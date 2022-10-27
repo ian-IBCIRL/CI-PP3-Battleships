@@ -228,7 +228,7 @@ def setup_battleships(user):
         player_board, computer_board
 
 
-def coordinates_entered(ship_map, user):
+def enter_coordinates(ship_map_data, user):
     """
     Runs required result checking functions
     """
@@ -236,6 +236,7 @@ def coordinates_entered(ship_map, user):
 
     coordinates_not_valid = True
     while coordinates_not_valid is True:
+        # loop until we get valid x,y input
         print("Please enter your move below,")
         print("with column (x) then row (y) separated by a comma\n")
         move = input("i.e. 'x,y' or 'Q' to quit\n")
@@ -243,8 +244,66 @@ def coordinates_entered(ship_map, user):
         if move == 'Q' or move == 'q':
             return 'Q'
 
-    print(ship_map)
-    return user
+        # exit loop if x,y are valid based on checking move entered
+        # against player move options
+        coordinates_not_valid = move_checker(move, ship_map_data[2])
+
+    # randomly generate computer move from range of valid moves
+    computer_move = \
+        ship_map_data[3].pop(random.randrange(len(ship_map_data[3])))
+    computername = 'Computer'
+
+    # check computer move for a hit or not
+    hit_or_miss(computer_move, ship_map_data[0], ship_map_data[5],
+                computername, user)
+    # check player move for a hit or not
+    hit_or_miss(move, ship_map_data[1], ship_map_data[4], user, computername)
+
+
+def hit_or_miss(move, enemy_ships_locations,
+                board_layout, name, oppositions_name):
+    """
+    Takes the move and checks if it's the same as a enemy ship
+    coordinates if so will send a H if not O
+    """
+    if move in enemy_ships_locations:
+        hit = 'H'
+        enemy_ships_locations.remove(move)
+    else:
+        hit = 'O'
+    outcome(move, board_layout, hit, name, oppositions_name)
+
+
+def outcome(move, board_layout, hit, name, oppositions_name):
+    """
+    Take the users input and edit the board data to change a - to
+    H or O depending if it's a hit or miss
+    """
+    xandy = move.split(',')
+    x_coord = int(xandy[0])
+    y_coord = int(xandy[1])
+
+    if hit == 'H':
+        board_layout[y_coord][x_coord] = 'H'
+        move_outcome = 'Hit!'
+    else:
+        board_layout[y_coord][x_coord] = 'O'
+        move_outcome = 'Miss'
+
+    print('--------------------------------------')
+    print(F"{oppositions_name}'s ships locations\n")
+
+    print(*board_layout[5], sep=' ')
+    print(*board_layout[4], sep=' ')
+    print(*board_layout[3], sep=' ')
+    print(*board_layout[2], sep=' ')
+    print(*board_layout[1], sep=' ')
+    print(*board_layout[0], sep=' ')
+    print(*board_layout[6], sep=' ')
+
+    print(' ')
+    print(f"{name} has fired upon: {move} its a {move_outcome}")
+    print('--------------------------------------')
 
 
 def build_board():
@@ -276,12 +335,56 @@ def show_results(result, user):
     return user
 
 
+def move_checker(move, valid_input_moves):
+    """
+    Runs required move checking functions
+    Checks the players input moves for input being a number, within
+    the range of the board, have only entered 2 coordinates, and not
+    already been entered
+    """
+    print("checking for hit")
+
+    print("Move is: ", move)
+    print("Ship data is: ", valid_input_moves)
+
+    ranges = range(1, 6)
+    moves = move.split(',')
+
+    try:
+        if len(moves) != 2:
+            print("\nIncorrect amount of coordinates have been entered,")
+            print(f"you have entered: {len(moves)} coordinates. Please")
+            print("enter 2 coordinates only\n")
+        elif moves[0].isnumeric() is False:
+            print(f"\nx coordinate is not a digit\
+                \nYou have entered: {moves[0]}\n")
+        elif moves[1].isnumeric() is False:
+            print(f"\ny coordinate is not a digit\
+                \nYou have entered: {moves[1]}\n")
+        elif int(moves[0]) not in ranges:
+            print("\nx coordinate is not a number on the board,")
+            print(f"you have entered: {moves[0]}\n")
+        elif int(moves[1]) not in ranges:
+            print("\ny coordinate is not a number on the board,")
+            print(f"you have entered: {moves[1]}\n")
+        elif move in valid_input_moves:
+            print(f"\nYou already fired upon these coordinates: {moves}\n")
+        else:
+            valid_input_moves.append(move)
+            return False
+    except ValueError:
+        print("\nPlease check as your input was not a valid coordinates,")
+        print(f"you entered: {moves}\n")
+
+    return True
+
+
 def check_moves(ship_data, user):
     """
     Function takes the player and computer ship lists and
     checks the length of the list, and while both have a length
     greater than 0 (indicating ships are left the game) the function continues.
-    The coordinates_entered function gets move coordinates
+    The enter_coordinates function gets move coordinates
     and outcome for both opponents.
     Unless the player has entered Q to quit the game.
     If the game ends without the player quitting it will also calculate
@@ -292,7 +395,7 @@ def check_moves(ship_data, user):
         print(f"{user} has {len(ship_data[0])} ships left")
         print(f"Computer has {len(ship_data[1])} ships left\n")
 
-        if coordinates_entered(ship_data, user) == 'Q':
+        if enter_coordinates(ship_data, user) == 'Q':
             print(f"Your remaining ships are at: {ship_data[0]}")
             print(f"The remaining opponent ships are at: {ship_data[1]}\n")
             return 'Q'
