@@ -63,10 +63,36 @@ def login_existing_user():
 def make_login():
     """
     Runs required make login functions
+    This function will check if a username is already in use. 
+    If not in use, the function will save the username and password 
+    to the spreadsheet and enable the recording of scores
     """
+
     print("You chose to make a new user login")
 
-    return False
+    acceptable_username = True
+
+    login = SHEET.worksheet('login')
+
+    username_data = login.col_values(1)
+    # password_data = login.col_values(2)
+
+    print("Please note: \nUsername and Password are case sensitive.\
+        \n20 characters or less in length")
+
+    while acceptable_username is True:
+        username = input('Please enter your username here:\n')
+
+        if username in username_data:
+            acceptable_username = False
+        elif username in ('q', 'Q'):
+            print(f"You have entered {username} to quit the game.")
+            print("Hope you come back soon!")
+            return 'Q'
+        else:
+            print(f"Username: '{username}', is not recognised please try again\n")
+
+    return username
 
 
 def ship_generator():
