@@ -1,9 +1,9 @@
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
-
+## About my project
 # Welcome!
 
 This is my Code Institute README for deploying my third portfolio project, the Python command-line project. 
-The last update to this file was: **October 20, 2022**
+The last update to this file was: **October 27, 2022**
 
 The aim of the game is to view a map/grid of possible locations for opponent's ships and try and locate the opponent's ships before their computer finds yours.
 I wanted to ensure the board layout has both computer and player boards side by side horizontally to help visualisation and save vertical screen space
@@ -25,6 +25,8 @@ Also provides an alternative to many existing versions of this game which use a 
 
 ![Flow chart](docs/images/work-flow.PNG)
 
+
+* [Back to top of README.md](#about-my-project) 
 
 ## Reminders
 
@@ -91,6 +93,8 @@ Steps to use and deploy this repository:
 - It can be "Fork" following the steps [here](https://docs.github.com/en/get-started/quickstart/fork-a-repo).
 - It can be "Clone" following the steps [here](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository#cloning-a-repository).
 
+* [Back to top of README.md](#about-my-project) 
+
 ### **Features to implement in future**
 
 I'd like to add more storyline, graphics and options for placing ships in user specified locations.
@@ -112,6 +116,7 @@ The site had been tested in Chrome, Firefox and Edge without issue.
 The usual linter website is not working, but the linter built into the template works fine, so fixes have been made as noted above.
 Gitpod's Linter shows no error for run.py file. 
 
+* [Back to top of README.md](#about-my-project) 
 
 ### **Manual Testing**
 
@@ -132,6 +137,20 @@ In this project, 3 libraries are utilised, as instructed by Code Institute and t
 - The Google gspread library is imported to control the spreadsheet containing the username and passwords and the user's scores.
 - The Google google.oauth2.service_account library is imported and the Credentials subsystem is used to authenticate and authorise the code to access the spreadsheet. 
 
+------
+
+## Release History
+
+I have continually developed this project to help give you the best experience. 
+Here is the version history:
+
+**Oct 4th, 2022** 
+- Planning initial project scope in the `README.md` file. 
+
+**Oct 27th, 2022** 
+- Added login creation and checking with score baseline logic.
+
+* [Back to top of README.md](#about-my-project) 
 
 -----
 Happy coding!
