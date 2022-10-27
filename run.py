@@ -81,7 +81,7 @@ def make_login():
         \n20 characters or less in length")
 
     while acceptable_username is True:
-        username = input('Please enter your username here:\n')
+        username = input('Please enter your username:\n')
 
         if username in username_data:
             acceptable_username = False
