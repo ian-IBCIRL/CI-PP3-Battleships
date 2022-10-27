@@ -101,7 +101,7 @@ def make_login():
     username_data = login.col_values(1)
     
     print("Please note: \nUsername and Password are case sensitive.\
-        \n20 characters or less in length")
+        \n10 characters or less in length")
 
     while acceptable_username is True:
         username = input('Please enter your username:\n')
@@ -112,7 +112,7 @@ def make_login():
                     \n'{username}' has already been selected.\n"
                 )
             acceptable_username = True
-        elif username.count(' ') >= 1 or username == '' or username.len > 20:
+        elif username.count(' ') >= 1 or username == '' or len(username) > 10:
             print(
                 f"Please select another username as '{username}' is not valid.\n"
                 )
@@ -123,6 +123,29 @@ def make_login():
             return 'Q'
         else:
             print(f"Username: '{username}', is not recognised please try again\n")
+
+    acceptable_password = True
+
+    while acceptable_password is True:
+        password = input('Please enter your password (max 20 chars):\n')
+        acceptable_password = False
+        if password.count(' ') >= 1 or password == '' or len(password) > 20:
+            print(
+                f"Please select another password as '{password}' is not valid.\n"
+                )
+            acceptable_password = True
+        elif password in ('q', 'Q'):
+            print(f"You have entered {password} to quit the game.")
+            print("Hope you come back soon!")
+            return 'Q'
+
+    new_user = [username, password]
+    new_user_score = [username, 0, 0, 0]
+
+    login.append_row(new_user)
+    score.append_row(new_user_score)
+
+    print('Thank you for creating an account')
 
     return username
 
