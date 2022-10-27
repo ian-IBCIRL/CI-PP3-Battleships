@@ -57,28 +57,44 @@ def login_existing_user():
     """
     print("You chose to login existing user")
 
-
-    acceptable_username = True
+    acceptable_username = False
 
     login = SHEET.worksheet('login')
 
     username_data = login.col_values(1)
-    # password_data = login.col_values(2)
+    password_data = login.col_values(2)
 
     print("Please note: \nUsername and Password are case sensitive.\
         \n20 characters or less in length")
 
-    while acceptable_username is True:
+    while acceptable_username is False:
         username = input('Please enter your username:\n')
 
         if username in username_data:
-            acceptable_username = False
+            acceptable_username = True
         elif username in ('q', 'Q'):
             print(f"You have entered {username} to quit the game.")
             print("Hope you come back soon!")
             return 'Q'
         else:
-            print(f"Username: '{username}', is not recognised please try again\n")
+            print(f"Username: '{username}', is not recognised.\
+                \nPlease try again\n")
+
+    username_place = username_data.index(username)
+
+    acceptable_password = False
+    while acceptable_password is False:
+        password = input('Please enter your password here:\n')
+
+        if password == password_data[username_place]:
+            print(f"Welcome back {username}")
+            acceptable_password = True
+        elif password == 'q' or password == 'Q':
+            print(f"You have entered {password} to quit the game.")
+            print("Hope you come back soon!")
+            return 'Q'
+        else:
+            print(f"Password: {password}, is not recognised please try again")
 
     return username
 
@@ -86,8 +102,8 @@ def login_existing_user():
 def make_login():
     """
     Runs required make login functions
-    This function will check if a username is already in use. 
-    If not in use, the function will save the username and password 
+    This function will check if a username is already in use.
+    If not in use, the function will save the username and password
     to the spreadsheet and enable the recording of scores
     """
 
@@ -99,7 +115,7 @@ def make_login():
     score = SHEET.worksheet('score')
 
     username_data = login.col_values(1)
-    
+
     print("Please note: \nUsername and Password are case sensitive.\
         \n10 characters or less in length")
 
@@ -114,15 +130,14 @@ def make_login():
             acceptable_username = True
         elif username.count(' ') >= 1 or username == '' or len(username) > 10:
             print(
-                f"Please select another username as '{username}' is not valid.\n"
+                f"Please select another username.\
+                    \n'{username}' is not valid.\n"
                 )
             acceptable_username = True
         elif username in ('q', 'Q'):
             print(f"You have entered {username} to quit the game.")
             print("Hope you come back soon!")
             return 'Q'
-        else:
-            print(f"Username: '{username}', is not recognised please try again\n")
 
     acceptable_password = True
 
@@ -131,7 +146,8 @@ def make_login():
         acceptable_password = False
         if password.count(' ') >= 1 or password == '' or len(password) > 20:
             print(
-                f"Please select another password as '{password}' is not valid.\n"
+                f"Please select another password.\
+                \n'{password}' is not valid.\n"
                 )
             acceptable_password = True
         elif password in ('q', 'Q'):
