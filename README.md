@@ -3,7 +3,7 @@
 # Welcome!
 
 This is my Code Institute README for deploying my third portfolio project, the Python command-line project. 
-The last update to this file was: **October 27, 2022**
+The last update to this file was: **October 28, 2022**
 
 The aim of the game is to view a map/grid of possible locations for opponent's ships and try and locate the opponent's ships before their computer finds yours.
 I wanted to ensure the board layout has both computer and player boards side by side horizontally to help visualisation and save vertical screen space
@@ -99,6 +99,7 @@ Steps to use and deploy this repository:
 
 I'd like to add more storyline, graphics and options for placing ships in user specified locations.
 And find a way to make a two player game so the computer moves are not necessary.
+I would also like to add colour, but conscious that may reduce accessibility
 
 ## **Technologies Used**
 - [Python](https://www.python.org/)
@@ -149,6 +150,9 @@ Here is the version history:
 
 **Oct 27th, 2022** 
 - Added login creation and checking with score baseline logic.
+
+**Oct 28th, 2022** 
+- Added results checking and GSheet record keeping, with some display output layout changes, especially printing player boards horizontally to save vertical scrolling space.
 
 * [Back to top of README.md](#about-my-project) 
 
