@@ -21,12 +21,152 @@ Also provides an alternative to many existing versions of this game which use a 
 - This continues until all either player’s ships have all been hit. 
 - The winner is the player with ships still remaining. 
 
+------
 ## Flow chart
 
-![Flow chart](docs/images/work-flow.PNG)
+![Flow chart](docs/images/work-flow.png)
 
 
 * [Back to top of README.md](#about-my-project) 
+
+------
+## **Features**
+
+- Start screen
+
+![Start screen](docs/images/1-startscreen.png)
+
+- Login screen
+
+![Login screen](/docs/images/2-L-login.png)
+
+- Login pause info
+
+![Login pause info](/docs/images/3-login-pause-and-display-info.png)
+
+- First screen
+
+![First screen](/docs/images/4-first-screen.png)
+
+- Move Entry results
+
+![Move Entry results](/docs/images/5-move-entry-results.png)
+
+- First Move results
+
+![First Move results](/docs/images/6-first-move-results.png)
+
+- First Column of shots fired - and out of range error checking
+
+![First Column of shots fired - and out of range error checking](/docs/images/7-first-column-of-shots-and-out-of-range-check.png)
+
+- Two Thirds played and computer may win?
+
+![Two Thirds played and computer may win?](/docs/images/8-two-thirds-through-computer-may-win.png)
+
+- Player loses at nearly 80 percent played
+
+![Player loses at nearly 80 percent played](/docs/images/9-player-loses-at-almost-80-percent.png)
+
+- Player wins
+
+![Player wins](/docs/images/9a-player-wins-at-almost-80-percent.png)
+
+- Recording of user results to GSheet
+
+![Recording of user results to GSheet](/docs/images/10-recording-ongoing-results-for-user-and-asking-for-replay.png)
+
+- Quitting after losing
+
+![Quitting after losing](/docs/images/11-quit-after-losing.png)
+
+- Choose to Make user
+
+![Choose to Make user](/docs/images/12-choose-m-to-make-user.png)
+
+- Thanks for making user
+
+![Thanks for making user](/docs/images/13-choose-m-to-make-user-with-thanks-and-info.png)
+
+- Error check in game - only 1 coordinate entered
+
+![Error check in game - only 1 coordinate entered](/docs/images/14-error-check-1-coord.png)
+
+- Error check in game - non digit coordinate entered
+
+![Error check in game - non digit coordinate entered](/docs/images/15-error-check-non-digit-coord.png)
+
+- Error check in game - too many coordinates entered
+
+![Error check in game - too many coordinates entered](/docs/images/16-error-check-3-too-many-coord.png)
+
+- Error check in game - coordinates missing comma
+
+![Error check in game - coordinates missing comma](/docs/images/17-error-check-coord-missing-comma.png)
+
+- Quit game at coordinate stage - during game
+
+![Quit game at coordinate stage - during game](/docs/images/18-quit-from-coordinate-entry.png)
+
+- Error check at login - retry password
+
+![Error check at login - retry password](/docs/images/19-error-retry-password-for-existing-user.png)
+
+------
+### **Features to implement in future**
+
+- I'd like to add more storyline, graphics and options for placing ships in user specified locations.
+- And find a way to make a two player game so the computer moves are not necessary.
+- I would also like to add colour, but conscious that may reduce accessibility
+- Would be nice to add a leaderboard so people could compare themselves to the top 10 players
+
+------
+## **Technologies Used**
+- [Python](https://www.python.org/)
+- [GitHub](https://github.com/)
+- [GitPod](https://www.gitpod.io/)
+- [Heroku](https://www.heroku.com/about)
+- [LucidCharts](https://www.lucidchart.com/pages/)
+
+------
+## **Testing**
+
+The site had been tested in Chrome, Firefox and Edge without issue. 
+
+### **Validation**
+
+The usual linter website is not working, but the linter built into the template works fine, so fixes have been made as noted above.
+Gitpod's Linter shows no error for run.py file. 
+
+* [Back to top of README.md](#about-my-project) 
+
+### **Manual Testing**
+
+| Feature | Test description | Validation | Outcome |
+|:---|        :---| :---|:---|
+| Name Input | Type in user's name | Check if empty | Pass |
+------
+## Constraints
+
+The deployment terminal is set to 80 columns by 24 rows. 
+That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+
+## Libraries used
+
+In this project, 3 libraries are utilised, as instructed by Code Institute and their python project template
+
+- The random library is imported to generate random numbers for the opponent ship placement coordinates and to generate the computer's next target location.
+- The Google gspread library is imported to control the spreadsheet containing the username and passwords and the user's scores.
+- The Google google.oauth2.service_account library is imported and the Credentials subsystem is used to authenticate and authorise the code to access the spreadsheet. 
+
+------
+## Bugs fixed
+* fixed pylint warnings about trailing spaces, space after # in comments
+* also fixed pylint error if using space between print command and opening bracket i.e. print ("test") is incorrect - should be print("test") with no space.
+* fixed .gitpod.yml problems by adding the following lines to vscode: extensions: section of .gitpod.yml file
+    - ms-toolsai.jupyter
+    - ms-toolsai.jupyter-keymap
+    - ms-toolsai.jupyter-renderers
 
 ## Reminders
 
@@ -37,14 +177,6 @@ Also provides an alternative to many existing versions of this game which use a 
 * If not using our Heroku deployed environment, you will need your own creds.json to access your own google spreadsheet.
 * Do not edit any of the other files or this code may not deploy properly
 
-## Bugs fixed
-* fixed pylint warnings about trailing spaces, space after # in comments
-* also fixed pylint error if using space between print command and opening bracket i.e. print ("test") is incorrect - should be print("test") with no space.
-* fixed .gitpod.yml problems by adding the following lines to vscode: extensions: section of .gitpod.yml file
-    - ms-toolsai.jupyter
-    - ms-toolsai.jupyter-keymap
-    - ms-toolsai.jupyter-renderers
-    
 ## Creating the Heroku app
 
 To create the app, I have added two buildpacks from the _Settings_ tab. The ordering is as follows:
@@ -57,7 +189,7 @@ I have also created a _Config Var_ called `PORT`. Set this to `8000`
 I have credentials, such as in the Love Sandwiches project, so have created another _Config Var_ called `CREDS` and pasted the JSON into the value field.
 
 You should connect your GitHub repository and deploy as normal.
-
+------
 ## **Deployment**
 
 The site has been deployed through Heroku. 
@@ -94,50 +226,6 @@ Steps to use and deploy this repository:
 - It can be "Clone" following the steps [here](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository#cloning-a-repository).
 
 * [Back to top of README.md](#about-my-project) 
-
-### **Features to implement in future**
-
-- I'd like to add more storyline, graphics and options for placing ships in user specified locations.
-- And find a way to make a two player game so the computer moves are not necessary.
-- I would also like to add colour, but conscious that may reduce accessibility
-- Would be nice to add a leaderboard so people could compare themselves to the top 10 players
-
-## **Technologies Used**
-- [Python](https://www.python.org/)
-- [GitHub](https://github.com/)
-- [GitPod](https://www.gitpod.io/)
-- [Heroku](https://www.heroku.com/about)
-- [LucidCharts](https://www.lucidchart.com/pages/)
-
-## **Testing**
-
-The site had been tested in Chrome, Firefox and Edge without issue. 
-
-### **Validation**
-
-The usual linter website is not working, but the linter built into the template works fine, so fixes have been made as noted above.
-Gitpod's Linter shows no error for run.py file. 
-
-* [Back to top of README.md](#about-my-project) 
-
-### **Manual Testing**
-
-| Feature | Test description | Validation | Outcome |
-|:---|        :---| :---|:---|
-| Name Input | Type in user's name | Check if empty | Pass |
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. 
-That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
-## Libraries used
-
-In this project, 3 libraries are utilised, as instructed by Code Institute and their python project template
-
-- The random library is imported to generate random numbers for the opponent ship placement coordinates and to generate the computer's next target location.
-- The Google gspread library is imported to control the spreadsheet containing the username and passwords and the user's scores.
-- The Google google.oauth2.service_account library is imported and the Credentials subsystem is used to authenticate and authorise the code to access the spreadsheet. 
 
 ------
 
