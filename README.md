@@ -97,9 +97,10 @@ Steps to use and deploy this repository:
 
 ### **Features to implement in future**
 
-I'd like to add more storyline, graphics and options for placing ships in user specified locations.
-And find a way to make a two player game so the computer moves are not necessary.
-I would also like to add colour, but conscious that may reduce accessibility
+- I'd like to add more storyline, graphics and options for placing ships in user specified locations.
+- And find a way to make a two player game so the computer moves are not necessary.
+- I would also like to add colour, but conscious that may reduce accessibility
+- Would be nice to add a leaderboard so people could compare themselves to the top 10 players
 
 ## **Technologies Used**
 - [Python](https://www.python.org/)

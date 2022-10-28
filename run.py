@@ -87,6 +87,7 @@ def login_existing_user():
         password = input('Please enter your password here:\n')
 
         if password == password_data[username_place]:
+            print('--------------------------------------')
             print(f"Welcome back {username}")
             acceptable_password = True
         elif password == 'q' or password == 'Q':
@@ -207,7 +208,7 @@ def setup_battleships(user):
     Runs required gameplay functions to set up
     new game boards, locations and moves
     """
-    print("Setting up Battleships")
+    print("Setting up Battleships for", user)
 
     print('A hit is displayed as a H')
     print('A miss is displayed as a O\n')
@@ -215,8 +216,6 @@ def setup_battleships(user):
 
     player_board = build_board()
     computer_board = build_board()
-
-    print_boards(computer_board, player_board, user)
 
     players_input_moves = []
     computer_potential_moves = [
@@ -239,7 +238,6 @@ def enter_coordinates(ship_map_data, user):
     """
     Runs required result checking functions
     """
-    print("getting moves and results")
 
     coordinates_not_valid = True
     while coordinates_not_valid is True:
@@ -271,11 +269,6 @@ def enter_coordinates(ship_map_data, user):
                 computername, user)
     # check player move for a hit or not
     hit_or_miss(move, ship_map_data[1], ship_map_data[4], user, computername)
-
-    player_board = ship_map_data[4]
-    computer_board = ship_map_data[5]
-
-    print_boards(computer_board, player_board, user)
 
 
 def hit_or_miss(move, enemy_ships_locations,
@@ -309,8 +302,8 @@ def outcome(move, board_layout, hit, name, oppositions_name):
         move_outcome = 'Miss'
 
     print(' ')
-    print(f"{name} has fired upon{oppositions_name}'s ships\n")
-    print(f"The location is: {move} and it's a {move_outcome}")
+    print(f"{name} fired at {oppositions_name}'s ships.")
+    print(f"The target location is: {move} and it's a {move_outcome}")
     print('--------------------------------------')
 
 
@@ -337,7 +330,6 @@ def display_results_table(result, user):
     Displays the result of the game and if the player has an
     account will display their total win/lose/draw
     """
-    print("Recording results and displaying overall")
 
     score = SHEET.worksheet('score')
 
@@ -361,6 +353,7 @@ def display_results_table(result, user):
             draw = int(draw) + 1
 
     if user != 'Guest' and result != 'Q':
+        print("Recording results and displaying results over time")
         print(f"\nWins: {win}\nLoses: {lose}\nDraws: {draw}")
 
         score.update('B' + str(username_place+1), win)
@@ -385,8 +378,8 @@ def move_checker(move, valid_input_moves):
 
     try:
         if len(moves) != 2:
-            print("\nIncorrect amount of coordinates have been entered,")
-            print(f"you have entered: {len(moves)} coordinates. Please")
+            print("\nYou entered the incorrect number of coordinates,")
+            print(f"You have entered: {len(moves)} coordinates. Please")
             print("enter 2 coordinates only\n")
         elif moves[0].isnumeric() is False:
             print(f"\nx coordinate is not a digit\
@@ -395,18 +388,18 @@ def move_checker(move, valid_input_moves):
             print(f"\ny coordinate is not a digit\
                 \nYou have entered: {moves[1]}\n")
         elif int(moves[0]) not in ranges:
-            print("\nx coordinate is not a number on the board,")
+            print("\nx coordinate is not a row on the map,")
             print(f"you have entered: {moves[0]}\n")
         elif int(moves[1]) not in ranges:
-            print("\ny coordinate is not a number on the board,")
+            print("\ny coordinate is not a column on the map,")
             print(f"you have entered: {moves[1]}\n")
         elif move in valid_input_moves:
-            print(f"\nYou already fired upon these coordinates: {moves}\n")
+            print(f"\nYou already fired at this location: {moves}\n")
         else:
             valid_input_moves.append(move)
             return False
     except ValueError:
-        print("\nPlease check as your input was not a valid coordinates,")
+        print("\nPlease check - entered coordinates are not valid")
         print(f"you entered: {moves}\n")
 
     return True
@@ -427,6 +420,7 @@ def check_moves(ship_data, user):
         print(' ')
         print(f"{user} has {len(ship_data[0])} ships left")
         print(f"Computer has {len(ship_data[1])} ships left\n")
+        input("Press enter to see the map and enter a target.")
 
         if enter_coordinates(ship_data, user) == 'Q':
             print(f"Your remaining ships are at: {ship_data[0]}")
