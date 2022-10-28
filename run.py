@@ -17,13 +17,12 @@ SHEET = GSPREAD_CLIENT.open('battleit')
 
 def loginuser():
     """
-    Allows set up of user account, or use of existing account, or guest login
+    Allows set up of username, or use of existing user, or guest login
     """
     login_valid = False
     while login_valid is False:
-        print("Logging in")
-        print("----------")
-        print('[L] Login and play using an existing account')
+        print("----------------------------------------")
+        print('[L] Login and play using an existing user')
         print('[M] Make an account to record your score')
         print('[G] Play as a guest\n')
         print('Or [Q] you can quit the game at any time.\n')
@@ -55,7 +54,8 @@ def login_existing_user():
     """
     Runs required login existing user functions
     """
-    print("You chose to login existing user")
+    print('--------------------------------------')
+    print("You chose to login an existing user")
 
     acceptable_username = False
 
@@ -65,8 +65,8 @@ def login_existing_user():
     password_data = login.col_values(2)
 
     print("Please note: \nUsername and Password are case sensitive.\
-        \n20 characters or less in length")
-
+        \n10 characters or less in length")
+    print('--------------------------------------')
     while acceptable_username is False:
         username = input('Please enter your username:\n')
 
@@ -142,9 +142,9 @@ def make_login():
     acceptable_password = True
 
     while acceptable_password is True:
-        password = input('Please enter your password (max 20 chars):\n')
+        password = input('Please enter your password (max 10 chars):\n')
         acceptable_password = False
-        if password.count(' ') >= 1 or password == '' or len(password) > 20:
+        if password.count(' ') >= 1 or password == '' or len(password) > 10:
             print(
                 f"Please select another password.\
                 \n'{password}' is not valid.\n"
@@ -178,6 +178,30 @@ def ship_generator():
     return ships
 
 
+def print_boards(computer_board, player_board, user):
+    """
+    prints locations for ships in horizontal format
+    """
+    print('----------------------------   \
+    ----------------------------')
+
+    print(f"{user}'s ship locations         \
+    Computer's ship locations\n")
+
+    board_gap = '                   '
+    print(*computer_board[0], board_gap, *player_board[0])
+    print(*computer_board[1], board_gap, *player_board[1])
+    print(*computer_board[2], board_gap, *player_board[2])
+    print(*computer_board[3], board_gap, *player_board[3])
+    print(*computer_board[4], board_gap, *player_board[4])
+    print(*computer_board[5], board_gap, *player_board[5])
+    print(*computer_board[6], board_gap, *player_board[6])
+
+    print(' ')
+    print('----------------------------   \
+    ----------------------------')
+
+
 def setup_battleships(user):
     """
     Runs required gameplay functions to set up
@@ -192,24 +216,7 @@ def setup_battleships(user):
     player_board = build_board()
     computer_board = build_board()
 
-    print('----------------------------   \
-    ----------------------------')
-
-    print(f"{user}'s ships locations        \
-    Computer's ships locations\n")
-
-    board_gap = '                   '
-    print(*computer_board[0], board_gap, *player_board[0])
-    print(*computer_board[1], board_gap, *player_board[1])
-    print(*computer_board[2], board_gap, *player_board[2])
-    print(*computer_board[3], board_gap, *player_board[3])
-    print(*computer_board[4], board_gap, *player_board[4])
-    print(*computer_board[5], board_gap, *player_board[5])
-    print(*computer_board[6], board_gap, *player_board[6])
-
-    print(' ')
-    print('----------------------------   \
-    ----------------------------')
+    print_boards(computer_board, player_board, user)
 
     players_input_moves = []
     computer_potential_moves = [
@@ -236,6 +243,12 @@ def enter_coordinates(ship_map_data, user):
 
     coordinates_not_valid = True
     while coordinates_not_valid is True:
+
+        player_board = ship_map_data[4]
+        computer_board = ship_map_data[5]
+
+        print_boards(computer_board, player_board, user)
+
         # loop until we get valid x,y input
         print("Please enter your move below,")
         print("with column (x) then row (y) separated by a comma\n")
@@ -259,6 +272,11 @@ def enter_coordinates(ship_map_data, user):
     # check player move for a hit or not
     hit_or_miss(move, ship_map_data[1], ship_map_data[4], user, computername)
 
+    player_board = ship_map_data[4]
+    computer_board = ship_map_data[5]
+
+    print_boards(computer_board, player_board, user)
+
 
 def hit_or_miss(move, enemy_ships_locations,
                 board_layout, name, oppositions_name):
@@ -276,7 +294,7 @@ def hit_or_miss(move, enemy_ships_locations,
 
 def outcome(move, board_layout, hit, name, oppositions_name):
     """
-    Take the users input and edit the board data to change a - to
+    Take the users input and edit the board data to insert
     H or O depending if it's a hit or miss
     """
     xandy = move.split(',')
@@ -290,19 +308,9 @@ def outcome(move, board_layout, hit, name, oppositions_name):
         board_layout[y_coord][x_coord] = 'O'
         move_outcome = 'Miss'
 
-    print('--------------------------------------')
-    print(F"{oppositions_name}'s ships locations\n")
-
-    print(*board_layout[5], sep=' ')
-    print(*board_layout[4], sep=' ')
-    print(*board_layout[3], sep=' ')
-    print(*board_layout[2], sep=' ')
-    print(*board_layout[1], sep=' ')
-    print(*board_layout[0], sep=' ')
-    print(*board_layout[6], sep=' ')
-
     print(' ')
-    print(f"{name} has fired upon: {move} its a {move_outcome}")
+    print(f"{name} has fired upon{oppositions_name}'s ships\n")
+    print(f"The location is: {move} and it's a {move_outcome}")
     print('--------------------------------------')
 
 
@@ -323,16 +331,41 @@ def build_board():
     return gamemap
 
 
-def show_results(result, user):
+def display_results_table(result, user):
     """
     Runs required result display functions
+    Displays the result of the game and if the player has an
+    account will display their total win/lose/draw
     """
-    print("checking results")
-    user = 'testuser'
-    result = 'winner'
-    print("User is: ", user)
-    print("Result is: ", result)
-    return user
+    print("Recording results and displaying overall")
+
+    score = SHEET.worksheet('score')
+
+    if user != 'Guest':
+        username_place = score.col_values(1).index(user)
+        win = score.col_values(2)[username_place]
+        lose = score.col_values(3)[username_place]
+        draw = score.col_values(4)[username_place]
+
+    if result == 'W':
+        print(f"Congratulations {user}, you WON!")
+        if user != 'Guest':
+            win = int(win) + 1
+    elif result == 'L':
+        print(f"Sorry {user} you lost. Better luck next time!")
+        if user != 'Guest':
+            lose = int(lose) + 1
+    elif result == 'D':
+        print(f"Nearly a win {user}, but you drew!")
+        if user != 'Guest':
+            draw = int(draw) + 1
+
+    if user != 'Guest' and result != 'Q':
+        print(f"\nWins: {win}\nLoses: {lose}\nDraws: {draw}")
+
+        score.update('B' + str(username_place+1), win)
+        score.update('C' + str(username_place+1), lose)
+        score.update('D' + str(username_place+1), draw)
 
 
 def move_checker(move, valid_input_moves):
@@ -342,10 +375,10 @@ def move_checker(move, valid_input_moves):
     the range of the board, have only entered 2 coordinates, and not
     already been entered
     """
-    print("checking for hit")
+    print('--------------------------------------')
 
-    print("Move is: ", move)
-    print("Ship data is: ", valid_input_moves)
+    print("Your Move is: ", move)
+    print("Checking if it is valid")
 
     ranges = range(1, 6)
     moves = move.split(',')
@@ -418,11 +451,9 @@ def continue_playing():
     Runs required continue playing functions
     to check if player would like to continue playing
     """
-    print("continue playing?")
-
     deciding = True
     while deciding is True:
-        playchoice = input("Would you like to play another game? \
+        playchoice = input("\nWould you like to play another game? \
         \nEnter [P] to play again\nor \nEnter [Q] to quit the game\n")
 
         if playchoice in ('P', 'p'):
@@ -437,20 +468,23 @@ def continue_playing():
 
 def main():
     """
-    Runs required program functions
+    Runs required overall program functions
+    login, playgame, setup, check moves, display and continue
     """
     user = loginuser()
     if user != 'q' and user != 'Q':
         playgame = True
         while playgame is True:
             ship_map = setup_battleships(user)
-            result = check_moves(ship_map, user)
-            show_results(result, user)
+            current_result = check_moves(ship_map, user)
+            display_results_table(current_result, user)
             playgame = continue_playing()
 
 
 # Checks the game loop
 # Allows the user to call other functions for testing
 if __name__ == "__main__":
+    print("----------------------------------------")
     print('Welcome to the game of Battleships!')
+    print("----------------------------------------")
     main()
