@@ -36,77 +36,115 @@ Also provides an alternative to many existing versions of this game which use a 
 
 ![Start screen](docs/images/1-startscreen.png)
 
+------
+
 - Login screen
 
 ![Login screen](/docs/images/2-L-login.png)
+
+------
 
 - Login pause info
 
 ![Login pause info](/docs/images/3-login-pause-and-display-info.png)
 
+------
+
 - First screen
 
 ![First screen](/docs/images/4-first-screen.png)
+
+------
 
 - Move Entry results
 
 ![Move Entry results](/docs/images/5-move-entry-results.png)
 
+------
+
 - First Move results
 
 ![First Move results](/docs/images/6-first-move-results.png)
+
+------
 
 - First Column of shots fired - and out of range error checking
 
 ![First Column of shots fired - and out of range error checking](/docs/images/7-first-column-of-shots-and-out-of-range-check.png)
 
+------
+
 - Two Thirds played and computer may win?
 
 ![Two Thirds played and computer may win?](/docs/images/8-two-thirds-through-computer-may-win.png)
+
+------
 
 - Player loses at nearly 80 percent played
 
 ![Player loses at nearly 80 percent played](/docs/images/9-player-loses-at-almost-80-percent.png)
 
+------
+
 - Player wins
 
 ![Player wins](/docs/images/9a-player-wins-at-almost-80-percent.png)
+
+------
 
 - Recording of user results to GSheet
 
 ![Recording of user results to GSheet](/docs/images/10-recording-ongoing-results-for-user-and-asking-for-replay.png)
 
+------
+
 - Quitting after losing
 
 ![Quitting after losing](/docs/images/11-quit-after-losing.png)
+
+------
 
 - Choose to Make user
 
 ![Choose to Make user](/docs/images/12-choose-m-to-make-user.png)
 
+------
+
 - Thanks for making user
 
 ![Thanks for making user](/docs/images/13-choose-m-to-make-user-with-thanks-and-info.png)
+
+------
 
 - Error check in game - only 1 coordinate entered
 
 ![Error check in game - only 1 coordinate entered](/docs/images/14-error-check-1-coord.png)
 
+------
+
 - Error check in game - non digit coordinate entered
 
 ![Error check in game - non digit coordinate entered](/docs/images/15-error-check-non-digit-coord.png)
+
+------
 
 - Error check in game - too many coordinates entered
 
 ![Error check in game - too many coordinates entered](/docs/images/16-error-check-3-too-many-coord.png)
 
+------
+
 - Error check in game - coordinates missing comma
 
 ![Error check in game - coordinates missing comma](/docs/images/17-error-check-coord-missing-comma.png)
 
+------
+
 - Quit game at coordinate stage - during game
 
 ![Quit game at coordinate stage - during game](/docs/images/18-quit-from-coordinate-entry.png)
+
+------
 
 - Error check at login - retry password
 
@@ -131,11 +169,18 @@ Also provides an alternative to many existing versions of this game which use a 
 ------
 ## **Testing**
 
-The site had been tested in Chrome, Firefox and Edge without issue. 
+The deployed Heroku site has been tested in Chrome, Firefox and Edge without issue. 
+
+I tested this code manually with the following:
+
+Check the code lint validation embedded in the Code institute python essentials template.
+All issues have been resolved such as the 'line too long' and 'Missing module docstring' even though these issues don't affect the game, they maintain code quality.
+I tested inputs with invalid inputs as listed in the testing results table below.
+I tested the code in the Gitpod terminal and the deployed Heroku terminal.
 
 ### **Validation**
 
-The usual linter website is not working, but the linter built into the template works fine, so fixes have been made as noted above.
+The usual linter website is not working, but the linter built into the template works fine, so fixes have been made as noted in the bugs section.
 Gitpod's Linter shows no error for run.py file. 
 
 * [Back to top of README.md](#about-my-project) 
@@ -145,6 +190,27 @@ Gitpod's Linter shows no error for run.py file.
 | Feature | Test description | Validation | Outcome |
 |:---|        :---| :---|:---|
 | Name Input | Type in user's name | Check if empty | Pass |
+| Start screen | Display start screen | Check if correct | Pass |
+| Login screen | Display login screen | Check prompt | Pass |
+| Login pause info | Display game info and pause | Check pause for enter key | Pass |
+| First screen | Display first game screen | Check if correct | Pass |
+| Move Entry results | Check move entry results | Check if correct | Pass |
+| First Move results | First move results | Check if correct | Pass |
+| First Column of shots fired | Check first five moves in first column | Check display of first column | Pass |
+| Out of range error checking | Check if error when coordinate out of range | Check error message | Pass |
+| Player loses | Check if player loses actions are correct | Check display for correct info | Pass |
+| Player wins | Check if player wins actions are correct | Check display for correct info | Pass |
+| Recording of user results to GSheet | Check if game results recorded | Check GSheet for new result | Pass |
+| Quitting after losing | Check if game takes quit and exits | Check if correct | Pass |
+| Choose to Make user | Check if new user created | Check GSheet for new user | Pass |
+| Thanks for making user | Check if thanks given | Check display for thanks | Pass |
+| Error check in game - only 1 coordinate entered | Check if game handles error | Check display | Pass |
+| Error check in game - non digit coordinate entered | Check if game handles error | Check display | Pass |
+| Error check in game - too many coordinates entered | Check if game handles error | Check display | Pass |
+| Error check in game - coordinates missing comma | Check if game handles error | Check display | Pass |
+| Quit game at coordinate stage - during game | Check if game quits | Check display | Pass |
+| Error check at login - retry password | Check if game handles error | Check display | Pass |
+
 ------
 ## Constraints
 
@@ -167,6 +233,12 @@ In this project, 3 libraries are utilised, as instructed by Code Institute and t
     - ms-toolsai.jupyter
     - ms-toolsai.jupyter-keymap
     - ms-toolsai.jupyter-renderers
+* was also getting an error `Missing module docstringpylint(missing-module-docstring)`
+    - fixed by adding a doc string (below) to the top of the run.py
+    - """
+    - Battleships game code
+    - """
+* learned this from https://stackoverflow.com/questions/65949325/how-do-you-fix-missing-module-docstringpylintmissing-module-docstring
 
 ## Reminders
 
