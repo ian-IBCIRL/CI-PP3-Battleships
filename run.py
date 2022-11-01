@@ -62,7 +62,13 @@ def login_existing_user():
 
     acceptable_username = False
 
-    login = SHEET.worksheet('login')
+    try:
+        login = SHEET.worksheet('login')
+        if login:
+            print("User details Sheet accessed successfully")
+    except gspread.exceptions.APIError as errorv:
+        print(f"problem occured accessing sheet data.\n{errorv}")
+        return 'Q'
 
     username_data = login.col_values(1)
     password_data = login.col_values(2)
