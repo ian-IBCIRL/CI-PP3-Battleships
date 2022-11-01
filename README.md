@@ -3,7 +3,7 @@
 # Welcome!
 
 This is my Code Institute README for deploying my third portfolio project, the Python command-line project. 
-The last update to this file was: **October 28, 2022**
+The last update to this file was: **November 1, 2022**
 
 The aim of the game is to view a map/grid of possible locations for opponent's ships and try and locate the opponent's ships before their computer finds yours.
 I wanted to ensure the board layout has both computer and player boards side by side horizontally to help visualisation and save vertical screen space
@@ -314,6 +314,10 @@ Here is the version history:
 
 **Oct 28th, 2022** 
 - Added results checking and GSheet record keeping, with some display output layout changes, especially printing player boards horizontally to save vertical scrolling space.
+
+**Nov 1st, 2022** 
+- Updated testing and fixed docstring error as documented
+
 
 * [Back to top of README.md](#about-my-project) 
 
