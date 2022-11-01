@@ -162,8 +162,19 @@ def make_login():
     new_user = [username, password]
     new_user_score = [username, 0, 0, 0]
 
-    login.append_row(new_user)
-    score.append_row(new_user_score)
+    try:
+        if login.append_row(new_user):
+            print(f"{new_user} appended successfully")
+    except gspread.exceptions.APIError as errorv:
+        print(f"problem occured appending new user data.\n{errorv}")
+        return 'Q'
+
+    try:
+        if score.append_row(new_user_score):
+            print(f"{new_user} score appended successfully")
+    except gspread.exceptions.APIError as errorv:
+        print(f"problem occured appending score data.\n{errorv}")
+        return 'Q'
 
     print('Thank you for creating an account')
 
