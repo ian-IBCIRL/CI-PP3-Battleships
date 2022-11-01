@@ -210,6 +210,7 @@ Gitpod's Linter shows no error for run.py file.
 | Error check in game - coordinates missing comma | Check if game handles error | Check display | Pass |
 | Quit game at coordinate stage - during game | Check if game quits | Check display | Pass |
 | Error check at login - retry password | Check if game handles error | Check display | Pass |
+| Tested guest login | Check if game allows guest login | Check display | Pass |
 
 ------
 ## Constraints
