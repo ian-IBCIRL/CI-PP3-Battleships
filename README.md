@@ -3,13 +3,12 @@
 # Welcome!
 
 This is my Code Institute README for deploying my third portfolio project, the Python command-line project. 
-The last update to this file was: **November 1, 2022**
+The last update to this file was: **November 2, 2022**
 
 The aim of the game is to view a map/grid of possible locations for opponent's ships and try and locate the opponent's ships before their computer finds yours.
-I studied the following example, as a good starting point https://github.com/HarveyBurton96/battleships 
-I wanted improve on existing versions to ensure the board layout has both computer and player boards side by side horizontally to help visualisation and save vertical screen space
-Also provides an alternative to many existing versions of this game which use a lot of vertical space.
-I also added more exception handling of the Google sheet interactions.
+I studied lots of examples on github and built my work flow from there, leading to the initial main loop and various functions with some refactoring to reduce repetition.
+I also wanted improve on existing versions to ensure the board layout has both computer and player boards side by side horizontally to help visualisation and save vertical screen space. This provides an alternative to many existing versions of this game which use a lot of vertical space.
+I also added more exception handling of the Google sheet interactions, as well as other input exception handling.
 
 ## Deployment
 * My code has been deployed to Heroku at https://battleship-ib.herokuapp.com/
