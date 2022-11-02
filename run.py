@@ -97,7 +97,7 @@ def login_existing_user():
 
         if password == password_data[username_place]:
             print('--------------------------------------')
-            print(f"Welcome back {username}")
+            print(f"Welcome back {username} !!!")
             acceptable_password = True
         elif password == 'q' or password == 'Q':
             print(f"You have entered {password} to quit the game.")
@@ -130,7 +130,7 @@ def make_login():
         \n10 characters or less in length")
 
     while acceptable_username is True:
-        username = input('Please enter your username:\n')
+        username = input('Please enter your chosen username (max 10 chars):\n')
         acceptable_username = False
         if username in username_data:
             print(
@@ -231,8 +231,8 @@ def setup_battleships(user):
     print("Setting up Battleships for", user)
 
     print('A hit is displayed as a H')
-    print('A miss is displayed as a O\n')
-    input("Press enter to continue...")
+    print('A miss is displayed as a O')
+    # input("Press enter to continue...")
 
     player_board = build_board()
     computer_board = build_board()

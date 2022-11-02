@@ -274,12 +274,16 @@ Deployment proccess:
 
 1. Log in [Github](https://github.com/).
     - Open the repo to deploy. 
-    - The one for this project is [here](https://github.com/ian-IBCIRL/bat).
+    - The one for this project is [here](https://github.com/ian-IBCIRL/CI-PP3-Battleships).
 2. Log in [Heroku](https://www.heroku.com/).
     - Click in the "New" button in the top right.
     - Select "Create New App"
     - Give a name to the App and choose a region (Europe, for example).
     - Click in "Create App" button.
+    - Scroll down to 'Config Vars' and click 'Reveal Config Vars'
+    - In the field for KEY, enter 'CREDS' 
+    - In the VALUE field paste your 'creds.json' information for accessing the Google sheet used to record user data
+    - Add another KEY as 'PORT' and VALUE is '8000'
     - Go to Settings in the nav bar, and select "Add Buildpacks".
     - Add `Python` and save, do the same for `Node.js`, in that order. 
     - `Python` must show first in the list.
