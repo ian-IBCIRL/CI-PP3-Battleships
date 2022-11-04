@@ -6,6 +6,10 @@ import random
 import gspread
 from google.oauth2.service_account import Credentials
 
+# Colorama module
+import colorama
+from colorama import Fore, Back, Style
+
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
@@ -230,9 +234,8 @@ def setup_battleships(user):
     """
     print("Setting up Battleships for", user)
 
-    print('A hit is displayed as a H')
+    print('A hit is displayed as a ' + Fore.YELLOW + 'H' + Fore.WHITE)
     print('A miss is displayed as a O')
-    # input("Press enter to continue...")
 
     player_board = build_board()
     computer_board = build_board()
@@ -315,8 +318,8 @@ def outcome(move, board_layout, hit, name, oppositions_name):
     y_coord = int(xandy[1])
 
     if hit == 'H':
-        board_layout[y_coord][x_coord] = 'H'
-        move_outcome = 'Hit!'
+        board_layout[y_coord][x_coord] = Fore.YELLOW + 'H' + Fore.WHITE
+        move_outcome = Fore.YELLOW + 'Hit!' + Fore.WHITE
     else:
         board_layout[y_coord][x_coord] = 'O'
         move_outcome = 'Miss'
