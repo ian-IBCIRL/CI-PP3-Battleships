@@ -7,8 +7,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 
 # Colorama module
-import colorama
-from colorama import Fore, Back, Style
+from colorama import Fore
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -242,11 +241,11 @@ def setup_battleships(user):
 
     players_input_moves = []
     computer_potential_moves = [
-        '1,5', '3,4', '1,1', '2,3', '1,4',
-        '5,1', '3,3', '5,5', '3,1', '2,2',
-        '4,3', '3,5', '4,1', '4,4', '5,3',
-        '2,1', '4,5', '4,2', '2,4', '3,2',
-        '1,2', '5,4', '2,5', '1,3', '5,2'
+        '1,2', '5,2', '2,5', '1,3', '5,4',
+        '5,1', '3,1', '5,5', '3,3', '2,2',
+        '4,4', '3,5', '4,1', '4,3', '5,3',
+        '1,1', '3,4', '1,5', '2,3', '1,4',
+        '2,4', '4,5', '4,2', '2,1', '3,2'
         ]
 
     player_ships_locations = ship_generator()
@@ -363,11 +362,12 @@ def display_results_table(result, user):
         draw = score.col_values(4)[username_place]
 
     if result == 'W':
-        print(f"Congratulations {user}, you WON!")
+        print(f"Congratulations {user}, you {Fore.YELLOW} WON! {Fore.WHITE}")
         if user != 'Guest':
             win = int(win) + 1
     elif result == 'L':
-        print(f"Sorry {user} you lost. Better luck next time!")
+        print(f"Sorry {user} you {Fore.YELLOW}lost{Fore.WHITE}.")
+        print("Better luck next time!")
         if user != 'Guest':
             lose = int(lose) + 1
     elif result == 'D':
@@ -452,14 +452,34 @@ def check_moves(ship_data, user):
 
     if len(ship_data[0]) != 0 and len(ship_data[1]) == 0:
         # player wins
+        input("Press enter to see the map.")
+        player_board = ship_data[4]
+        computer_board = ship_data[5]
+
+        print_boards(computer_board, player_board, user)
+
         print(f"Your remaining ships are at: {ship_data[0]}\n")
+
         return 'W'
     if len(ship_data[1]) != 0 and len(ship_data[0]) == 0:
         # computer wins
+        input("Press enter to see the map.")
+
+        player_board = ship_data[4]
+        computer_board = ship_data[5]
+
+        print_boards(computer_board, player_board, user)
+
         print(f"The remaining opponent ships are at: {ship_data[1]}\n")
         return 'L'
     if len(ship_data[0]) == 0 and len(ship_data[1]) == 0:
         # both sides were destroyed in the same round -> draw
+
+        player_board = ship_data[4]
+        computer_board = ship_data[5]
+
+        print_boards(computer_board, player_board, user)
+
         return 'D'
 
 
