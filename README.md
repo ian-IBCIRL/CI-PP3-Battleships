@@ -3,12 +3,14 @@
 # Welcome!
 
 This is my Code Institute README for deploying my third portfolio project, the Python command-line project. 
-The last update to this file was: **November 2, 2022**
+The last update to this file was: **November 4, 2022**
 
 The aim of the game is to view a map/grid of possible locations for opponent's ships and try and locate the opponent's ships before their computer finds yours.
 I studied lots of examples on github and built my work flow from there, leading to the initial main loop and various functions with some refactoring to reduce repetition.
 I also wanted improve on existing versions to ensure the board layout has both computer and player boards side by side horizontally to help visualisation and save vertical screen space. This provides an alternative to many existing versions of this game which use a lot of vertical space.
 I also added more exception handling of the Google sheet interactions, as well as other input exception handling.
+For final release for submission I added some colour successfully added colorama to build.
+I am very conscious of risk to accessibility and contrast requirements so used Yellow as closest to white and not risk darker colours that might fail.
 
 ## Deployment
 * My code has been deployed to Heroku at https://battleship-ib.herokuapp.com/
@@ -158,6 +160,8 @@ I also added more exception handling of the Google sheet interactions, as well a
 - And find a way to make a two player game so the computer moves are not necessary.
 - I would also like to add colour, but conscious that may reduce accessibility
 - Would be nice to add a leaderboard so people could compare themselves to the top 10 players
+- I added colorama, and tried to minimise accessibility risk of failing, so might add more colour in future.
+- I might also add https://www.textualize.io/ as recommended by my mentor.
 
 ------
 ## **Technologies Used**
@@ -166,6 +170,7 @@ I also added more exception handling of the Google sheet interactions, as well a
 - [GitPod](https://www.gitpod.io/)
 - [Heroku](https://www.heroku.com/about)
 - [LucidCharts](https://www.lucidchart.com/pages/)
+- [Colorama](https://pypi.org/project/colorama/)
 
 ------
 ## **Testing**
@@ -221,11 +226,13 @@ That means that each line of text needs to be 80 characters or less otherwise it
 
 ## Libraries used
 
-In this project, 3 libraries are utilised, as instructed by Code Institute and their python project template
+In this project, 4 libraries are utilised, as instructed by Code Institute and their python project template, together with colorama and random
 
 - The random library is imported to generate random numbers for the opponent ship placement coordinates and to generate the computer's next target location.
 - The Google gspread library is imported to control the spreadsheet containing the username and passwords and the user's scores.
 - The Google google.oauth2.service_account library is imported and the Credentials subsystem is used to authenticate and authorise the code to access the spreadsheet. 
+- For final release for submission I added some colour successfully added the colorama library to build, as recommended by my cohort facilitator
+- I am very conscious of risk to accessibility and contrast requirements so used Yellow as closest to white and not risk darker colours that might fail.
 
 ------
 ## Bugs fixed
@@ -323,6 +330,10 @@ Here is the version history:
 
 **Nov 1st, 2022** 
 - Updated testing and fixed docstring error as documented
+
+**Nov 4th, 2022** 
+- Final release for submission with some colour successfully added colorama to build.
+- very conscious of risk to accessibility and contrast requirements so used Yellow as closest to white and not risk darker colours that might fail.
 
 
 * [Back to top of README.md](#about-my-project) 
